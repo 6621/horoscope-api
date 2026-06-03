@@ -4,27 +4,52 @@
 <meta charset="UTF-8">
 <title>AI 戀愛占星配對</title>
 <style>
-/* 保持你原本精美的 CSS 樣式不變 */
-.card { width: 380px; background: white; border-radius: 24px; padding: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); font-family: "Microsoft JhengHei", sans-serif; margin: 20px auto; }
+/* 保持你原本精美的 CSS 樣式，並融入背景圖與毛玻璃視覺 */
+.card { 
+  width: 380px; 
+  background: rgba(255, 255, 255, 0.85); /* 改為半透明白 */
+  border-radius: 24px; 
+  padding: 30px; 
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
+  font-family: "Microsoft JhengHei", sans-serif; 
+  margin: 20px auto; 
+  backdrop-filter: blur(10px); /* 質感毛玻璃效果 */
+  -webkit-backdrop-filter: blur(10px); 
+}
 h1 { text-align: center; color: #d63384; font-size: 1.8rem; margin-bottom: 5px; }
-.subtitle { text-align: center; color: #777; margin-bottom: 25px; font-size: 0.9rem; }
+.subtitle { text-align: center; color: #555; margin-bottom: 25px; font-size: 0.9rem; font-weight: bold; }
 label { font-weight: bold; color: #444; font-size: 0.95rem; }
-select, input { width: 100%; padding: 12px; margin: 8px 0 18px; border-radius: 12px; border: 1px solid #ddd; font-size: 16px; box-sizing: border-box; }
-button { width: 100%; padding: 14px; border: none; border-radius: 999px; background: linear-gradient(135deg, #ff4d88, #ff7eb3); color: white; font-size: 18px; cursor: pointer; }
+select, input { width: 100%; padding: 12px; margin: 8px 0 18px; border-radius: 12px; border: 1px solid #ddd; font-size: 16px; box-sizing: border-box; background: rgba(255,255,255,0.9); }
+button { width: 100%; padding: 14px; border: none; border-radius: 999px; background: linear-gradient(135deg, #ff4d88, #ff7eb3); color: white; font-size: 18px; cursor: pointer; box-shadow: 0 4px 15px rgba(255,77,136,0.3); }
 button:hover { transform: scale(1.02); }
 button:disabled { background: #ccc; cursor: not-allowed; }
 .result { margin-top: 25px; padding: 20px; border-radius: 18px; display: none; }
 .result h2 { margin-top: 0; font-size: 1.2rem; }
 .item { margin-bottom: 12px; line-height: 1.6; font-size: 0.95rem; }
 .badge { display: inline-block; background: #ff4d88; color: white; padding: 4px 12px; border-radius: 999px; font-weight: bold; font-size: 0.85rem; }
-.loading { text-align: center; display: none; color: #d63384; margin-top: 20px; font-weight: bold; }
+.loading { text-align: center; display: none; color: #d63384; margin-top: 20px; font-weight: bold; text-shadow: 0 1px 4px rgba(255,255,255,0.8); }
+
+/* ✨ 新增滿版星空背景設定 */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-image: url('lwSvBQeJfZgCMkwBwwkC44_1780471181603_na1fn_L2hvbwvubwjudwuvem9kawfjx2xvdmvfymfja2dyb3vuzf8xNng5.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>
 </head>
 <body>
 
 <div class="card">
   <h1>💘 AI 戀愛占星配對</h1>
-  <p class=\"subtitle\">看看命運偷偷幫你安排了誰</p>
+  <p class="subtitle">看看命運偷偷幫你安排了誰</p>
 
   <label>主體星座</label>
   <select id="web-sign">
@@ -75,7 +100,6 @@ async function callBackendAPI() {
   const themeMap = { "牡羊座": ["rgba(255, 75, 75, 0.15)", "#cc1111"], "金牛座": ["rgba(139, 195, 74, 0.15)", "#33691e"], "雙子座": ["rgba(255, 213, 79, 0.2)", "#e65100"], "巨蟹座": ["rgba(144, 202, 249, 0.25)", "#0d47a1"], "獅子座": ["rgba(255, 152, 0, 0.15)", "#e65100"], "處女座": ["rgba(165, 214, 167, 0.2)", "#1b5e20"], "天秤座": ["rgba(248, 187, 208, 0.3)", "#880e4f"], "天蠍座": ["rgba(126, 87, 194, 0.15)", "#4a148c"], "射手座": ["rgba(179, 157, 219, 0.2)", "#311b92"], "摩羯座": ["rgba(141, 110, 99, 0.2)", "#4e342e"], "水瓶座": ["rgba(0, 188, 212, 0.15)", "#006064"], "雙魚座": ["rgba(206, 147, 216, 0.25)", "#4a148c"] };
 
   try {
-    // 呼叫你的獨立後端 API（本地測試先用 localhost）
     const response = await fetch( 'https://horoscope-api-2-t8bp.onrender.com/api/match', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
