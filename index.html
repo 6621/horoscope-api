@@ -4,17 +4,44 @@
 <meta charset="UTF-8">
 <title>AI 戀愛占星配對</title>
 <style>
-/* 保持你原本精美的 CSS 樣式，並融入背景圖與毛玻璃視覺 */
+/* 🚀 讀取同資料夾底下的「背景.webp」 */
+html::before {
+  content: "" !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-image: url('背景.webp') !important; /* 已修正為您的真實檔名 */
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  z-index: -9999 !important;
+}
+
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh !important;
+  background: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* 保持你原本精美的 CSS 樣式，並微調卡片為半透明毛玻璃感 */
 .card { 
   width: 380px; 
-  background: rgba(255, 255, 255, 0.85); /* 改為半透明白 */
+  background: rgba(255, 255, 255, 0.85) !important; 
   border-radius: 24px; 
   padding: 30px; 
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
   font-family: "Microsoft JhengHei", sans-serif; 
-  margin: 20px auto; 
-  backdrop-filter: blur(10px); /* 質感毛玻璃效果 */
+  margin: auto !important; 
+  backdrop-filter: blur(10px); 
   -webkit-backdrop-filter: blur(10px); 
+  position: relative;
+  z-index: 10;
 }
 h1 { text-align: center; color: #d63384; font-size: 1.8rem; margin-bottom: 5px; }
 .subtitle { text-align: center; color: #555; margin-bottom: 25px; font-size: 0.9rem; font-weight: bold; }
@@ -28,21 +55,6 @@ button:disabled { background: #ccc; cursor: not-allowed; }
 .item { margin-bottom: 12px; line-height: 1.6; font-size: 0.95rem; }
 .badge { display: inline-block; background: #ff4d88; color: white; padding: 4px 12px; border-radius: 999px; font-weight: bold; font-size: 0.85rem; }
 .loading { text-align: center; display: none; color: #d63384; margin-top: 20px; font-weight: bold; text-shadow: 0 1px 4px rgba(255,255,255,0.8); }
-
-/* ✨ 新增滿版星空背景設定 */
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background-image: url('lwSvBQeJfZgCMkwBwwkC44_1780471181603_na1fn_L2hvbwvubwjudwuvem9kawfjx2xvdmvfymfja2dyb3vuzf8xNng5.webp');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 </style>
 </head>
 <body>
